@@ -11,9 +11,9 @@
 	</script>
 
 	<!-- required: a default theme -->
-	<link rel="stylesheet" href="../themes/claro/document.css"/>
-	<link rel="stylesheet" href="../../dijit/themes/claro/claro.css"/>
-	<link rel="stylesheet" href="../tests/css/dijitTests.css"/>
+	<link rel="stylesheet/less" type="text/css" href="../themes/claro/document.less"/>
+	<link rel="stylesheet/less" type="text/css" href="../themes/claro/claro.less"/>
+	<link rel="stylesheet/less" type="text/css" href="../tests/css/dijitTests.css"/>
 
 	<style type="text/css">
 		html, body { height: 100%; width: 100%; padding: 0; border: 0; }
@@ -62,6 +62,7 @@
 		.inputPadding5 .dijitInputField { padding: 5px !important; }
 	</style>
 
+	<script src="less.js" type="text/javascript"></script>
 	<!-- a check for stray globals: not needed! -->
 	<script type="text/javascript">
 		window.__globalList = { dojo: true, dijit: true, dojox: true, dojoConfig:true };
@@ -69,7 +70,7 @@
 			window.__globalList[i] = true;
 		}
 	</script>
-
+	
 	<!-- required: dojo.js -->
 	<script type="text/javascript" src="../../dojo/dojo.js"
 		data-dojo-config="parseOnLoad: false"></script>
