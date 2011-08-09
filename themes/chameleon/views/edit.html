@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Chameleon: Dijit Theme Editor</title>
+	<style>
+		#preview { 
+			width: 90%;
+			height: 500px;
+		}
+	</style>
+</head>
+<body>
+	<h1>${Name}: Dijit Theme Editor (${foo})</h1>
+	<form method="POST" action="/edit">
+		<input type="text" name="testvar" value="">
+		<input type="submit" value="go">
+	</form>
+	
+	<iframe src="/preview" id="preview"></iframe>
+</body>
+</html>

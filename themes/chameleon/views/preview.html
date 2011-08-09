@@ -11,9 +11,9 @@
 	</script>
 
 	<!-- required: a default theme -->
-	<link rel="stylesheet/less" type="text/css" href="${contextPath}/dijit/themes/claro/document.less"/>
-	<link rel="stylesheet/less" type="text/css" href="${contextPath}/dijit/themes/claro/claro.less"/>
-	<link rel="stylesheet/less" type="text/css" href="${contextPath}/dijit/tests/css/dijitTests.css"/>
+	<link rel="stylesheet" type="text/css" href="${themeUrl}/document.css"/>
+	<link rel="stylesheet" type="text/css" href="${themeUrl}/chameleon.css"/>
+	<link rel="stylesheet" type="text/css" href="${dojoBaseUrl}/dijit/tests/css/dijitTests.css"/>
 
 	<style type="text/css">
 		html, body { height: 100%; width: 100%; padding: 0; border: 0; }
@@ -62,7 +62,7 @@
 		.inputPadding5 .dijitInputField { padding: 5px !important; }
 	</style>
 
-	<script src="${contextPath}/dijit/themes/less.js" type="text/javascript"></script>
+	<!--script src="${dojoBaseUrl}/dijit/themes/less.js" type="text/javascript"></script -->
 	<!-- a check for stray globals: not needed! -->
 	<script type="text/javascript">
 		window.__globalList = { dojo: true, dijit: true, dojox: true, dojoConfig:true };
@@ -72,7 +72,7 @@
 	</script>
 	
 	<!-- required: dojo.js -->
-	<script type="text/javascript" src="${contextPath}/dojo/dojo.js"
+	<script type="text/javascript" src="${dojoBaseUrl}/dojo/dojo.js"
 		data-dojo-config="parseOnLoad: false"></script>
 	<script type="text/javascript">
 		require([
@@ -188,10 +188,10 @@
 					// availableThemes[] is just a list of 'official' dijit themes, you can use ?theme=String
 					// for 'un-supported' themes, too. (eg: yours)
 					var availableThemes = [
-						{ theme:"claro", author:"Dojo", baseUri:"../themes/" },
-						{ theme:"tundra", author:"Dojo", baseUri:"../themes/" },
-						{ theme:"soria", author:"nikolai", baseUri:"../themes/" },
-						{ theme:"nihilo", author:"nikolai", baseUri:"../themes/" }
+						{ theme:"chameleon", author:"Dojo", baseUri:"${dojoBaseUrl}/dijit/themes/" },
+						{ theme:"tundra", author:"Dojo", baseUri:"${dojoBaseUrl}/dijit/themes/" },
+						{ theme:"soria", author:"nikolai", baseUri:"${dojoBaseUrl}/dijit/themes/" },
+						{ theme:"nihilo", author:"nikolai", baseUri:"${dojoBaseUrl}/dijit/themes/" }
 					];
 		
 					var tmpString='';
@@ -238,17 +238,17 @@
 			});
 	</script>
 </head>
-<body class="claro">
+<body class="chameleon">
 	<!-- basic preloader: -->
 	<div id="loader"><div id="loaderInner" style="direction:ltr;">Loading themeTester ... </div></div>
 
 	<!-- data for tree and combobox -->
 	<div data-dojo-type="dojo.data.ItemFileReadStore" data-dojo-id="continentStore"
-		data-dojo-props="url:'../tests/_data/countries.json'"></div>
+		data-dojo-props="url:'${dojoBaseUrl}/dijit/tests/_data/countries.json'"></div>
 	<div data-dojo-id="continentModel" data-dojo-type="dijit.tree.ForestStoreModel" data-dojo-props='store:continentStore, query:{type:"continent"},
 		rootId:"continentRoot", rootLabel:"Continents", childrenAttrs:["children"]'></div>
 	<div data-dojo-type="dojo.data.ItemFileReadStore" data-dojo-id="stateStore"
-		data-dojo-props="url:'../tests/_data/states.json'"></div>
+		data-dojo-props="url:'${dojoBaseUrl}/dijit/tests/_data/states.json'"></div>
 	<!-- contentMenu popup -->												<!-- redundant display:none required here? -->
 	<div data-dojo-type="dijit.Menu" id="submenu1" data-dojo-props='contextMenuForWindow:true, style:"display:none"' style="display: none;">
 		<div data-dojo-type="dijit.MenuItem" 
@@ -767,14 +767,14 @@ nulla &#8234;facilisi.&#8236;
 					causes editor to become VERY tall, and size to a normal height when selected (like the
 					dijit.form.TextArea in "Form Feel" Tab), but in reverse. refs #3980 and is maybe new bug?
 				-->
-				<div data-dojo-type="dijit.Editor" data-dojo-props="height:175, extraPlugins:['|', 'createLink', 'fontName'], styleSheets:'../themes/claro/document.css'">
+				<div data-dojo-type="dijit.Editor" data-dojo-props="height:175, extraPlugins:['|', 'createLink', 'fontName'], styleSheets:'${dojoBaseUrl}/dijit/themes/chameleon/document.css'">
 					<ul>
 						<li>Lorem <a href="http://dojotoolkit.org">and a link</a>, what do you think?</li>
 						<li>This is the Editor with a Toolbar attached.</li>
 					</ul>
 				</div>
 				<p>Disabled:</p>
-				<div data-dojo-type="dijit.Editor" data-dojo-props="height:175, extraPlugins:['|', 'createLink', 'fontName'], styleSheets:'../themes/claro/document.css', disabled:true">
+				<div data-dojo-type="dijit.Editor" data-dojo-props="height:175, extraPlugins:['|', 'createLink', 'fontName'], styleSheets:'${dojoBaseUrl}/dijit/themes/chameleon/document.css', disabled:true">
 					<ul>
 						<li>Lorem <a href="http://dojotoolkit.org">and a link</a>, what do you think?</li>
 						<li>This is the Editor with a Toolbar attached.</li>
@@ -826,9 +826,9 @@ nulla &#8234;facilisi.&#8236;
 				">
 					<div data-dojo-type="dijit.form.HorizontalRule" data-dojo-props='container:"bottomDecoration", count:3, style:"height:5px;"'></div>
 					<ol data-dojo-type="dijit.form.HorizontalRuleLabels" data-dojo-props='container:"bottomDecoration", style:"height:1em;font-size:75%;"'>
-						<li><img width=10 height=10 src="${contextPath}/dijit/tests/images/note.gif"><br><span style="font-size: small">small</span>
-						<li><img width=15 height=15 src="${contextPath}/dijit/tests/images/note.gif"><br><span style="font-size: medium">medium</span>
-						<li><img width=20 height=20 src="${contextPath}/dijit/tests/images/note.gif"><br><span style="font-size: large">large</span>
+						<li><img width=10 height=10 src="${dojoBaseUrl}/dijit/tests/images/note.gif"><br><span style="font-size: small">small</span>
+						<li><img width=15 height=15 src="${dojoBaseUrl}/dijit/tests/images/note.gif"><br><span style="font-size: medium">medium</span>
+						<li><img width=20 height=20 src="${dojoBaseUrl}/dijit/tests/images/note.gif"><br><span style="font-size: large">large</span>
 					</ol>
 				</div>
 
@@ -868,9 +868,9 @@ nulla &#8234;facilisi.&#8236;
 				">
 					<div data-dojo-type="dijit.form.HorizontalRule" data-dojo-props='container:"bottomDecoration", count:3, style:"height:5px;"'></div>
 					<ol data-dojo-type="dijit.form.HorizontalRuleLabels" data-dojo-props='container:"bottomDecoration", style:"height:1em;font-size:75%;"'>
-						<li><img width=10 height=10 src="${contextPath}/dijit/tests/images/note.gif"><br><span style="font-size: small">small</span>
-						<li><img width=15 height=15 src="${contextPath}/dijit/tests/images/note.gif"><br><span style="font-size: medium">medium</span>
-						<li><img width=20 height=20 src="${contextPath}/dijit/tests/images/note.gif"><br><span style="font-size: large">large</span>
+						<li><img width=10 height=10 src="${dojoBaseUrl}/dijit/tests/images/note.gif"><br><span style="font-size: small">small</span>
+						<li><img width=15 height=15 src="${dojoBaseUrl}/dijit/tests/images/note.gif"><br><span style="font-size: medium">medium</span>
+						<li><img width=20 height=20 src="${dojoBaseUrl}/dijit/tests/images/note.gif"><br><span style="font-size: large">large</span>
 					</ol>
 				</div>
 			</div>
@@ -977,8 +977,8 @@ nulla &#8234;facilisi.&#8236;
 			</div><!-- end DnD tab -->
 
 			<div data-dojo-type="dijit.layout.TabContainer" data-dojo-props="closable:true, title:'Nested TabContainer', nested:true" id="inlined">
-				<a data-dojo-type="dijit.layout.LinkPane" id="tab1href" data-dojo-props="href:'../tests/layout/tab1.html', onLoad:function(){ console.log('load of SubTab 1'); }">SubTab 1</a>
-				<a data-dojo-type="dijit.layout.LinkPane" id="tab2href" data-dojo-props="href:'../tests/layout/tab2.html', onLoad:function(){ console.log('load of SubTab 2'); }, selected:true">SubTab 2</a>
+				<a data-dojo-type="dijit.layout.LinkPane" id="tab1href" data-dojo-props="href:'${dojoBaseUrl}/dijit/tests/layout/tab1.html', onLoad:function(){ console.log('load of SubTab 1'); }">SubTab 1</a>
+				<a data-dojo-type="dijit.layout.LinkPane" id="tab2href" data-dojo-props="href:'${dojoBaseUrl}/dijit/tests/layout/tab2.html', onLoad:function(){ console.log('load of SubTab 2'); }, selected:true">SubTab 2</a>
 				<div data-dojo-type="dijit.layout.ContentPane" id="subtab3" data-dojo-props='title:"SubTab 3"'>
 					<h1>I am tab 3, inlined.</h1>
 				</div>
@@ -1004,7 +1004,7 @@ nulla &#8234;facilisi.&#8236;
 				<p>You can explore this single page after applying a Theme
 				for use in creation of your own theme.</p>
 
-				<p>I am whole slew of Widgets on a page. Jump to <a href="${contextPath}/dijit/tests/">dijit tests</a> to
+				<p>I am whole slew of Widgets on a page. Jump to <a href="${dojoBaseUrl}/dijit/tests/">dijit tests</a> to
 				test individual components.</p>
 
 				<p>There is a right-click [context] pop-up menu here, as well.</p>
@@ -1029,7 +1029,7 @@ nulla &#8234;facilisi.&#8236;
 	<!-- dialog in body -->
 	<div id="dialog1" data-dojo-type="dijit.Dialog" style="display:none;" data-dojo-props="
 		title:'Floating Modal Dialog from href',
-		href:'../tests/layout/getResponse.php?delay=3000&amp;messId=3',
+		href:'${dojoBaseUrl}/dijit/tests/layout/getResponse.php?delay=3000&amp;messId=3',
 		style: 'width: 400px;',
 		refreshOnShow:true
 	"></div>
