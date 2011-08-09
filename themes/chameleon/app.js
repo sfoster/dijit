@@ -1,5 +1,6 @@
 var express = require('express'), 
-  fs = require('fs');
+  fs = require('fs'),
+  url = require('url');
 
 var app = module.exports = express.createServer();
 
@@ -12,7 +13,13 @@ var dojoPath = __dirname + "/../../..";
 
 app.configure(function(){
   app.set('views', __dirname + '/views');
-  app.set('view engine', 'jade');
+  
+  app.set("view engine", "html");
+  app.set('view options', {
+    layout: false
+  });
+  app.register(".html", require("jqtpl").express);
+  
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(app.router);
@@ -31,32 +38,20 @@ app.configure('production', function(){
   app.use(express.errorHandler()); 
 });
 
-// Routes
-app.get('/dijit/themes/themeTester.html', function(req, res){
-
-  // templated response, 
-  // render the themeTester 
-  // passing in template context data
-
-
-  var data = {
-    contextPath: ""
-  };
-  // TODO: implement as view w. simple template engine
-  // res.render('index', data);
-  
-  // send parameterized contents of a static file
-  fs.readFile(
-    __dirname + '/themeTester.html', 
-    function(err, html){
-      html = html.toString().replace(/\$\{([^\}]+)\}/g, function(m, name){
-        return data[name] || "";
-      });
-      res.contentType('text/html');
-      res.send(html);
+var context = {
+    themeDir: url.resolve(__dirname +"/", "../claro"),
+    themeUrl: '/dijit/themes/chameleon',
+    dojoBaseUrl: '',
+    transform: {
+      name: ['claro', 'chameleon'],
+      Name: ['Claro', 'Chameleon']
     }
-  );   
-});
+};
+
+console.log("dirname: " + __dirname + ", themeDir: " + context.themeDir);
+
+// setup routes
+require('chameleon/routes')(app, express, context);
 
 app.listen(3000);
 console.log("Express server listening on port %d", app.address().port);
